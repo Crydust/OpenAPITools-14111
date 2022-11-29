@@ -1,0 +1,197 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+	"version" : "v2",
+	"title" : "Discovery API"
+  },
+  "paths" : {
+
+  },
+  "definitions" : {
+	"Chronology" : {
+	  "type" : "object",
+	  "properties" : {
+		"zone" : {
+		  "$ref" : "#/definitions/DateTimeZone"
+		}
+	  }
+	},
+	"DateTimeField" : {
+	  "type" : "object",
+	  "properties" : {
+		"lenient" : {
+		  "type" : "boolean",
+		  "default" : false
+		},
+		"durationField" : {
+		  "$ref" : "#/definitions/DurationField"
+		},
+		"minimumValue" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"rangeDurationField" : {
+		  "$ref" : "#/definitions/DurationField"
+		},
+		"maximumValue" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"leapDurationField" : {
+		  "$ref" : "#/definitions/DurationField"
+		},
+		"name" : {
+		  "type" : "string"
+		},
+		"type" : {
+		  "$ref" : "#/definitions/DateTimeFieldType"
+		},
+		"supported" : {
+		  "type" : "boolean",
+		  "default" : false
+		}
+	  }
+	},
+	"DateTimeFieldType" : {
+	  "type" : "object",
+	  "properties" : {
+		"durationType" : {
+		  "$ref" : "#/definitions/DurationFieldType"
+		},
+		"rangeDurationType" : {
+		  "$ref" : "#/definitions/DurationFieldType"
+		},
+		"name" : {
+		  "type" : "string"
+		}
+	  }
+	},
+	"DateTimeZone" : {
+	  "type" : "object",
+	  "properties" : {
+		"fixed" : {
+		  "type" : "boolean",
+		  "default" : false
+		},
+		"id" : {
+		  "type" : "string"
+		}
+	  }
+	},
+	"DurationField" : {
+	  "type" : "object",
+	  "properties" : {
+		"unitMillis" : {
+		  "type" : "integer",
+		  "format" : "int64"
+		},
+		"precise" : {
+		  "type" : "boolean",
+		  "default" : false
+		},
+		"name" : {
+		  "type" : "string"
+		},
+		"type" : {
+		  "$ref" : "#/definitions/DurationFieldType"
+		},
+		"supported" : {
+		  "type" : "boolean",
+		  "default" : false
+		}
+	  }
+	},
+	"DurationFieldType" : {
+	  "type" : "object",
+	  "properties" : {
+		"name" : {
+		  "type" : "string"
+		}
+	  }
+	},
+	"EndDates" : {
+	  "type" : "object",
+	  "properties" : {
+		"localDate" : {
+		  "type" : "string",
+		  "format" : "date",
+		  "example" : "yyyy-MM-dd",
+		  "description" : "The event end date in local date"
+		},
+		"localTime" : {
+		  "example" : "yyyy-MM-dd",
+		  "position" : 1,
+		  "description" : "The event end time in local time",
+		  "$ref" : "#/definitions/LocalTime"
+		},
+		"dateTime" : {
+		  "type" : "string",
+		  "format" : "date-time",
+		  "example" : "yyyy-MM-ddThh-mm-ssZ",
+		  "position" : 2,
+		  "description" : "The event end date time"
+		},
+		"approximate" : {
+		  "type" : "boolean",
+		  "position" : 3,
+		  "description" : "Boolean flag to indicate whether or not the end date is approximated",
+		  "default" : false
+		},
+		"noSpecificTime" : {
+		  "type" : "boolean",
+		  "position" : 4,
+		  "description" : "Boolean flag to indicate whether or not the event end time has no specific time",
+		  "default" : false
+		}
+	  },
+	  "description" : "Event's End Dates"
+	},
+	"LocalTime" : {
+	  "type" : "object",
+	  "properties" : {
+		"chronology" : {
+		  "$ref" : "#/definitions/Chronology"
+		},
+		"millisOfSecond" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"millisOfDay" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"secondOfMinute" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"minuteOfHour" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"hourOfDay" : {
+		  "type" : "integer",
+		  "format" : "int32"
+		},
+		"values" : {
+		  "type" : "array",
+		  "items" : {
+			"type" : "integer",
+			"format" : "int32"
+		  }
+		},
+		"fieldTypes" : {
+		  "type" : "array",
+		  "items" : {
+			"$ref" : "#/definitions/DateTimeFieldType"
+		  }
+		},
+		"fields" : {
+		  "type" : "array",
+		  "items" : {
+			"$ref" : "#/definitions/DateTimeField"
+		  }
+		}
+	  }
+	}
+  }
+}
