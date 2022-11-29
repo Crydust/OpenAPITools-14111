@@ -78,7 +78,7 @@
 					-->
 					<modelsToGenerate>EndDates</modelsToGenerate>
 					<!-- Without this line "LocalTime" adds an import for joda time: -->
-					<typeMappings>LocalTime=java.time.LocalTime</typeMappings>
+<!--					<typeMappings>LocalTime=java.time.LocalTime</typeMappings>-->
 				</configuration>
 			</plugin>
 		</plugins>
